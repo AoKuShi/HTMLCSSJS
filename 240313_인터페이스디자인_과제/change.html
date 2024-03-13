@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <script>
+        num1 = prompt("금액을 입력하세요(원) : ")
+        
+        let c5;
+        let c1;
+
+        c5 = (num1 - num1%500)/500
+        c1 = (num1%500 - (num1%500)%100)/100
+
+        alert("금액 " + num1 + "원은 500원 동전" + c5 + "개와 100원 동전 " + c1 + "개가 필요합니다.")
+    </script>
+</head>
+<body>
+</body>
+</html>
