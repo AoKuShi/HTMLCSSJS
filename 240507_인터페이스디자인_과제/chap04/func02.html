@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Function2 Test</title>
+</head>
+<body>
+  <script>
+    function gugudan(num1) {
+
+      document.write("[ 구구단 " + num1 + "단 ]<br>");
+      for (let index = 1; index <= 9; index++) {
+        document.write(num1 + " X " + index + " = " + (num1 * index) + "<br>");
+        //document.write('${num1} X ${index} = ${num1 * index} <br>');
+      }
+    };
+
+    const gugudanVar = function (num1) {
+
+      document.write("[ 구구단 " + num1 + "단 ]<br>");
+      for (let index = 1; index <= 9; index++) {
+        document.write(num1 + " X " + index + " = " + (num1 * index) + "<br>");
+
+      }
+    };
+
+    const gugudanArrow = (num1) => {
+
+      document.write("[ 구구단 " + num1 + "단 ]<br>");
+      for (let index = 1; index <= 9; index++) {
+        document.write(num1 + " X " + index + " = " + (num1 * index) + "<br>");
+
+      }
+    };
+
+    gugudan(3);
+    document.write("<br>")
+    gugudanVar(4);
+    document.write("<br>")
+    gugudanArrow(5);
+
+  </script>
+</body>
+</html>
