@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gugudan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            background-color: ghostwhite;
+        }
+        
+
+        h1, input {
+            margin: 10px;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>구구단</h1>
+    <label for="dan">1~9까지의 숫자를 입력하세요</label>
+    <input type="number" id="dan" min="1" max="9">
+    <button onclick=func1()>출력</button>
+    <div id="result"></div>
+
+    <script>
+        function func1() {
+            const dan = document.getElementById('dan').value;
+            const resultDiv = document.getElementById('result');
+            resultDiv.innerHTML = '';
+            p = '';
+
+            if (dan < 1 || dan > 9) {
+                resultDiv.innerHTML = '잘목된 입력입니다.';
+                return;
+            }
+
+            p += '<br>&nbsp;&nbsp;<' + dan + '단><br>'
+            for (let i = 1; i <= 9; i++) {
+                p += `${dan} x ${i} = ${dan * i}<br>`;
+            }
+            resultDiv.innerHTML = p;
+        }
+    </script>
+</body>
+
+</html>

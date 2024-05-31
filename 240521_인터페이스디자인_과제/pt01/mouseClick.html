@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>mouseClick</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      background-color: ghostwhite;
+    }
+
+    h1, input {
+      margin: 10px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 2px solid black;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>마우스 클릭</h1>
+  <label for="dan">2~20까지의 숫자를 입력하세요</label>
+  <input type="number" id="inNum" min="2" max="20">
+  <button onclick=func1()>시작</button>
+  <br><br>
+  <div id="result"></div>
+
+  <script>
+    function func1() {
+      const inNum = document.getElementById('inNum').value;
+      const div1 = document.getElementById('result');
+      p = '<table id="table1" border="1"><tbody>';
+
+      if (inNum < 2 || inNum > 20) {
+        div1.innerHTML = '잘목된 입력입니다.';
+        return;
+      }
+
+      for (let i = 1; i <= inNum; i++) {
+        p += '<tr>';
+        for (let j = 1; j <= inNum; j++) {
+          p += '<td></td>';
+        }
+        p += '</tr>';
+      }
+      p += '</tbody></table>';
+
+      div1.innerHTML = p;
+
+      func2(inNum);
+    }
+
+    function func2(inNum) {
+      const table = document.getElementById('table1');
+      const x = Math.floor(Math.random() * inNum);
+      const y = Math.floor(Math.random() * inNum);
+
+      const cell = table.rows[y].cells[x];
+
+      cell.innerHTML = 'Click!';
+
+      cell.addEventListener('click', function cl() {
+        func1();
+      });
+    }
+
+  </script>
+</body>
+
+</html>

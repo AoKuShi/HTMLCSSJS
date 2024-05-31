@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>moveCell</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      background-color: ghostwhite;
+    }
+
+    h1, input {
+      margin: 10px;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    table {
+      border-collapse: collapse;
+    }
+
+    td {
+      border: 2px solid black;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>무브 셀</h1>
+  <label for="dan">2~20까지의 숫자를 입력하세요</label>
+  <input type="number" id="inNum" min="2" max="20">
+  <button onclick=func1()>시작</button>
+  <br><br>
+  <div id="result"></div>
+
+  <script>
+    function func1() {
+      const inNum = document.getElementById('inNum').value;
+      const div1 = document.getElementById('result');
+      p = '<table id="table1" border="1"><tbody>';
+
+      if (inNum < 2 || inNum > 20) {
+        div1.innerHTML = '잘목된 입력입니다.';
+        return;
+      }
+      
+      for (let i = 1; i <= inNum; i++) {
+        p += '<tr>';
+        for (let j = 1; j <= inNum; j++) {
+          p += '<td></td>';
+        }
+        p += '</tr>';
+      }
+      p += '</tbody></table>';
+
+      div1.innerHTML = p
+
+      const x = Math.floor(inNum / 2);
+      const y = x;
+
+      
+      func2(inNum, x, y)
+    }
+
+    function func2(inNum, x, y) {
+      const table = document.getElementById('table1');
+
+      const cell = table.rows[y].cells[x];
+
+      cell.style.backgroundColor = 'black'
+
+      document.addEventListener('keydown', function keyB(event) {
+
+        switch (event.key) {
+          case 'ArrowLeft':
+            x = x <= 0 ? inNum - 1 : x - 1
+            break;
+          case 'ArrowRight':
+            x = x >= inNum - 1 ? 0 : x + 1
+            break;
+          case 'ArrowUp':
+            y = y <= 0 ? inNum - 1 : y - 1
+            break;
+          case 'ArrowDown':
+            y = y >= inNum - 1 ? 0 : y + 1
+            break;
+          default:
+            return;
+        }
+
+        cell.style.backgroundColor = ''
+        document.removeEventListener('keydown', keyB)
+        func2(inNum, x, y)
+      });
+
+    }
+
+
+  </script>
+</body>
+
+</html>
